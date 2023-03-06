@@ -1,4 +1,4 @@
-# docker-wp-fpm-alpine
+# docker-wp-litespeed-alpine
 Wordpress running with LiteSpeed and PHP 8 inside a Docker container running Alpine with Redis as object cache.
 
 Environment:
