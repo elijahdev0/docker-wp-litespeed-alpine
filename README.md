@@ -19,6 +19,7 @@ DB_PASSWORD=
 DB_PASS=
 DB_HOST=localhost
 DB_CHARSET=utf8
+OBJ_CACHE=none  #options: memcached, redis
 ```
 
 It will download the latest (or the version specified in "WP_VER")
@@ -47,6 +48,7 @@ services:
       HTTPS_DOMAIN: example.com
       LS_SOFT_LIMIT: 512M
       LS_HARD_LIMIT: 700M
+	  OBJ_CACHE: memcached
       #WP_LANG: ja
     healthcheck:
       test: wget -q -O - http://localhost/health_check.php | grep "ok"

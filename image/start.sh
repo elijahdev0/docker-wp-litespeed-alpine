@@ -1,5 +1,18 @@
 #!/bin/bash
 echo "Starting..."
+case $OBJ_CACHE in
+	"memcached" )
+		apk add --update --no-cache memcached php$PHP_VER-pecl-memcached
+		memcached -d -u litespeed
+		rm -rf /var/cache/apk/*
+	;;
+	"redis" )
+		apk add --update --no-cache redis
+		redis-server &
+		rm -rf /var/cache/apk/*
+	;;
+esac
+
 install=false
 if [[ -f /var/www/wp-config.php ]]; then
 	curr_ver=$(awk '/^\$wp_version/ { print $3 }' /var/www/wp-includes/version.php | sed "s/[';]//g")
@@ -74,9 +87,6 @@ if [[ $install == true ]]; then
 		exit 1
 	fi
 fi
-
-# Starting redis
-redis-server &
 
 # LiteSpeed setup:
 echo "Starting litespeed...."
