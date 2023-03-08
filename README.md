@@ -48,7 +48,7 @@ services:
       HTTPS_DOMAIN: example.com
       LS_SOFT_LIMIT: 512M
       LS_HARD_LIMIT: 700M
-	  OBJ_CACHE: memcached
+      OBJ_CACHE: memcached
       #WP_LANG: ja
     healthcheck:
       test: wget -q -O - http://localhost/health_check.php | grep "ok"
