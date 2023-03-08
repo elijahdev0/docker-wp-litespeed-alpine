@@ -28,7 +28,7 @@ It will download the latest (or the version specified in "WP_VER")
 
 Example:
 
-```
+```yaml
 services:
   wp:
     image: intellisrc/wp-litespeed-alpine:edge
