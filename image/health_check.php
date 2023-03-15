@@ -20,7 +20,7 @@ $headers = get_headers("http://localhost/", false, stream_context_set_default(
     )
 ));
 //var_dump($headers);
-$code = substr($headers[0], 9, 1) * 1;
+$code = isset($headers[0]) ? substr($headers[0], 9, 1) * 1 : 5;
 if($code > 3) {
 	echo "Error: Invalid response: $code";
 	exit();
