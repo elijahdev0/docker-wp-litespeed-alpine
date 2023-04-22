@@ -12,6 +12,7 @@ ENV DB_HOST=localhost
 ENV DB_CHARSET=utf8
 ENV LS_SOFT_LIMIT=512M
 ENV LS_HARD_LIMIT=700M
+ENV PHP_MAX_UPLOAD=20M
 # Object cache options: "redis", "memcached" or "none"
 ENV OBJ_CACHE=none
 # Adjust properly if needed:

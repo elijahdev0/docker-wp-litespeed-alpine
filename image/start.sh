@@ -97,6 +97,11 @@ rm /etc/litespeed/httpd_config.patch
 sed -i "s/SOFT_LIMIT/$LS_SOFT_LIMIT/g" "$ls_conf"
 sed -i "s/HARD_LIMIT/$LS_HARD_LIMIT/g" "$ls_conf"
 
+# PHP setup:
+php_ini="/etc/php${PHP_VER}/php.ini"
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = $PHP_MAX_UPLOAD/" "$php_ini"
+sed -i "s/post_max_size = 8M/post_max_size = $PHP_MAX_UPLOAD/" "$php_ini"
+
 # Remove Example data
 rm -rf "$ls_root/Example"
 rm -rf "$ls_root/conf/vhosts/Example"
