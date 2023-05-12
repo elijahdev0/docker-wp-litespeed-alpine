@@ -1,5 +1,5 @@
---- wp-config-sample.php	2023-03-01 13:27:58.316430645 +0900
-+++ wp-config-custom.php	2023-03-06 10:28:33.116258461 +0900
+--- wp-config-sample.php	2023-03-01 13:27:58.000000000 +0900
++++ wp-config-custom.php	2023-05-12 14:12:11.720310826 +0900
 @@ -1,4 +1,10 @@
  <?php
 +$ssl=true;
@@ -11,7 +11,38 @@
  /**
   * The base configuration for WordPress
   *
-@@ -93,4 +99,6 @@
+@@ -28,8 +34,14 @@
+ /** Database password */
+ define( 'DB_PASSWORD', 'password_here' );
+ 
+-/** Database hostname */
+-define( 'DB_HOST', 'localhost' );
++/** Database hostname (used in health_check) */
++define( 'DB_HOSTNAME', 'localhost' );
++
++/** Database port (used in health_check) */
++define( 'DB_PORT', 'db_port' );
++
++/** Database hostname (used by WP) */
++define( 'DB_HOST', DB_HOSTNAME.(DB_PORT ? ":".DB_PORT : "") );
+ 
+ /** Database charset to use in creating database tables. */
+ define( 'DB_CHARSET', 'utf8' );
+@@ -37,6 +49,13 @@
+ /** The database collate type. Don't change this if in doubt. */
+ define( 'DB_COLLATE', '' );
+ 
++/** Enable SSL for Database **/
++define("DB_SSL", db_ssl_enabled);
++if(DB_SSL) {
++	define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
++	define('MYSQL_SSL_CA', '/etc/ssl/cert.pem');
++}
++
+ /**#@+
+  * Authentication unique keys and salts.
+  *
+@@ -93,4 +112,6 @@
  }
  
  /** Sets up WordPress vars and included files. */

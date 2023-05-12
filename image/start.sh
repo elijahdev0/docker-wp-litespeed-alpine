@@ -65,6 +65,10 @@ if [[ $install == true ]]; then
 					sed -i "s/password_here/${DB_PASS:-$DB_PASSWORD}/" $settings
 					# DB_HOST
 					sed -i "s/localhost/${DB_HOST}/" $settings
+					# DB_PORT
+					sed -i "s/db_port/${DB_PORT}/" $settings
+					# DB_SSL
+					sed -i "s/db_ssl_enabled/${DB_SSL}/" $settings
 					# DB_CHARSET
 					sed -i "s/utf8/${DB_CHARSET}/" $settings
 					# WP_PREFIX

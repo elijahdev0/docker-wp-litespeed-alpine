@@ -34,14 +34,27 @@ define( 'DB_USER', 'username_here' );
 /** Database password */
 define( 'DB_PASSWORD', 'password_here' );
 
-/** Database hostname */
-define( 'DB_HOST', 'localhost' );
+/** Database hostname (used in health_check) */
+define( 'DB_HOSTNAME', 'localhost' );
+
+/** Database port (used in health_check) */
+define( 'DB_PORT', 'db_port' );
+
+/** Database hostname (used by WP) */
+define( 'DB_HOST', DB_HOSTNAME.(DB_PORT ? ":".DB_PORT : "") );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
+
+/** Enable SSL for Database **/
+define("DB_SSL", db_ssl_enabled);
+if(DB_SSL) {
+	define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+	define('MYSQL_SSL_CA', '/etc/ssl/cert.pem');
+}
 
 /**#@+
  * Authentication unique keys and salts.

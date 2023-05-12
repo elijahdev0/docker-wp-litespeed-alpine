@@ -5,7 +5,12 @@ define("HEALTH_CHECK", true);
 require_once('wp-config.php');
 
 // Test database connection
-$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$db = mysqli_init();
+if (DB_SSL) {
+	mysqli_options ($db, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
+	$db->ssl_set(NULL, NULL, MYSQL_SSL_CA, NULL, NULL);
+}
+$mysqli = mysqli_real_connect($db, DB_HOSTNAME, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, NULL, MYSQL_CLIENT_FLAGS);
 if ($mysqli->connect_errno) {
     echo "Error: Failed to connect to database.";
     exit();
