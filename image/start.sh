@@ -66,7 +66,7 @@ if [[ $install == true ]]; then
 					# DB_HOST
 					sed -i "s/localhost/${DB_HOST}/" $settings
 					# DB_PORT
-					sed -i "s/db_port/${DB_PORT}/" $settings
+					sed -i "s/ 3306 / ${DB_PORT:-3306} /" $settings
 					# DB_SSL
 					sed -i "s/db_ssl_enabled/${DB_SSL}/" $settings
 					# DB_CHARSET

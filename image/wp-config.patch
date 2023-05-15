@@ -1,5 +1,5 @@
 --- wp-config-sample.php	2023-03-01 13:27:58.000000000 +0900
-+++ wp-config-custom.php	2023-05-12 14:12:11.720310826 +0900
++++ wp-config-custom.php	2023-05-13 16:29:32.589248257 +0900
 @@ -1,4 +1,10 @@
  <?php
 +$ssl=true;
@@ -21,14 +21,14 @@
 +define( 'DB_HOSTNAME', 'localhost' );
 +
 +/** Database port (used in health_check) */
-+define( 'DB_PORT', 'db_port' );
++define( 'DB_PORT', 3306 );
 +
 +/** Database hostname (used by WP) */
 +define( 'DB_HOST', DB_HOSTNAME.(DB_PORT ? ":".DB_PORT : "") );
  
  /** Database charset to use in creating database tables. */
  define( 'DB_CHARSET', 'utf8' );
-@@ -37,6 +49,13 @@
+@@ -37,6 +49,15 @@
  /** The database collate type. Don't change this if in doubt. */
  define( 'DB_COLLATE', '' );
  
@@ -37,12 +37,14 @@
 +if(DB_SSL) {
 +	define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 +	define('MYSQL_SSL_CA', '/etc/ssl/cert.pem');
++} else {
++	define('MYSQL_CLIENT_FLAGS', 0);
 +}
 +
  /**#@+
   * Authentication unique keys and salts.
   *
-@@ -93,4 +112,6 @@
+@@ -93,4 +114,6 @@
  }
  
  /** Sets up WordPress vars and included files. */

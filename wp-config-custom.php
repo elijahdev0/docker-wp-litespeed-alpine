@@ -38,7 +38,7 @@ define( 'DB_PASSWORD', 'password_here' );
 define( 'DB_HOSTNAME', 'localhost' );
 
 /** Database port (used in health_check) */
-define( 'DB_PORT', 'db_port' );
+define( 'DB_PORT', 3306 );
 
 /** Database hostname (used by WP) */
 define( 'DB_HOST', DB_HOSTNAME.(DB_PORT ? ":".DB_PORT : "") );
@@ -54,6 +54,8 @@ define("DB_SSL", db_ssl_enabled);
 if(DB_SSL) {
 	define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 	define('MYSQL_SSL_CA', '/etc/ssl/cert.pem');
+} else {
+	define('MYSQL_CLIENT_FLAGS', 0);
 }
 
 /**#@+
