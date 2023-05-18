@@ -1,6 +1,6 @@
 --- wp-config-sample.php	2023-03-01 13:27:58.000000000 +0900
-+++ wp-config-custom.php	2023-05-13 16:29:32.589248257 +0900
-@@ -1,4 +1,10 @@
++++ wp-config-custom.php	2023-05-18 13:41:03.329580614 +0900
+@@ -1,4 +1,12 @@
  <?php
 +$ssl=true;
 +define('MY_SITE','HTTPS_DOMAIN');
@@ -8,10 +8,12 @@
 +define('WP_HOME','http'.($ssl ? 's' : '').'://'.MY_SITE);
 +define('WP_SITEURL','http'.($ssl ? 's' : '').'://'.MY_SITE);
 +$_SERVER['HTTPS'] = $ssl ? 'on' : 'off';
++?>
++<?php
  /**
   * The base configuration for WordPress
   *
-@@ -28,8 +34,14 @@
+@@ -28,8 +36,14 @@
  /** Database password */
  define( 'DB_PASSWORD', 'password_here' );
  
@@ -28,7 +30,7 @@
  
  /** Database charset to use in creating database tables. */
  define( 'DB_CHARSET', 'utf8' );
-@@ -37,6 +49,15 @@
+@@ -37,6 +51,15 @@
  /** The database collate type. Don't change this if in doubt. */
  define( 'DB_COLLATE', '' );
  
@@ -44,7 +46,7 @@
  /**#@+
   * Authentication unique keys and salts.
   *
-@@ -93,4 +114,6 @@
+@@ -93,4 +116,6 @@
  }
  
  /** Sets up WordPress vars and included files. */

@@ -5,6 +5,8 @@ $_SERVER['HTTP_HOST'] = MY_SITE;
 define('WP_HOME','http'.($ssl ? 's' : '').'://'.MY_SITE);
 define('WP_SITEURL','http'.($ssl ? 's' : '').'://'.MY_SITE);
 $_SERVER['HTTPS'] = $ssl ? 'on' : 'off';
+?>
+<?php
 /**
  * The base configuration for WordPress
  *
