@@ -115,9 +115,11 @@ rm -rf "$ls_root/logs/Example"
 
 init_script=${INIT_SCRIPT:-"/var/www/wp-content/init.sh"}
 if [[ -f "$init_script" ]]; then
+	echo "Starting custom script..."
 	chmod +rx "$init_script"
 	bash "$init_script"
 	chmod -rwx "$init_script"
+	echo "Custom script executed."
 else
 	echo "INFO: You can customize this site by adding 'init.sh' script under 'wp-content' directory";
 fi
