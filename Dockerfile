@@ -14,6 +14,9 @@ ENV DB_SSL=false
 ENV LS_SOFT_LIMIT=512M
 ENV LS_HARD_LIMIT=700M
 ENV PHP_MAX_UPLOAD=20M
+# You can specify a path to execute a script to setup the site each start
+# By default it will look for it at wp-content/init.sh"
+ENV INIT_SCRIPT=
 # Object cache options: "redis", "memcached" or "none"
 ENV OBJ_CACHE=none
 # Adjust properly if needed:
