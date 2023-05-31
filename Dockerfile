@@ -22,7 +22,7 @@ ENV INIT_SCRIPT=
 # Object cache options: "redis", "memcached" or "none"
 ENV OBJ_CACHE=none
 # Adjust properly if needed:
-ENV PHP_VER=82
+ENV PHP_VER=8
 
 RUN apk add --update --no-cache \
 	curl rsync patch litespeed \
