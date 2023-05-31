@@ -51,6 +51,11 @@ if [[ $install == true ]]; then
 					rsync -ia /tmp/wordpress/ /var/www/;
 					settings="/var/www/wp-config-sample.php"
 					patch -u "$settings" -i /var/www/wp-config.patch
+					#TMP: backward compatibility:
+					if [[ "$HTTPS_DOMAIN" != "" ]]; then
+						DOMAIN="$HTTPS_DOMAIN";
+						HTTPS="true";
+					fi
 					if [[ "$DOMAIN" != "" ]]; then
 						sed -i "s/DOMAIN/$DOMAIN/" $settings
 						sed -i "s/=HTTPS/=$HTTPS/" $settings
