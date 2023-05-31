@@ -51,10 +51,10 @@ if [[ $install == true ]]; then
 					rsync -ia /tmp/wordpress/ /var/www/;
 					settings="/var/www/wp-config-sample.php"
 					patch -u "$settings" -i /var/www/wp-config.patch
-					if [[ "$HTTPS_DOMAIN" != "" ]]; then
-						# HTTPS Rules
-						sed -i "s/HTTPS_DOMAIN/$HTTPS_DOMAIN/" $settings
-					else
+					if [[ "$DOMAIN" != "" ]]; then
+						sed -i "s/DOMAIN/$DOMAIN/" $settings
+						sed -i "s/=HTTPS/=$HTTPS/" $settings
+					else # If domain is not specified, remove header code
 						sed -i -e 1,8d $settings
 					fi
 					rm /var/www/wp-config.patch

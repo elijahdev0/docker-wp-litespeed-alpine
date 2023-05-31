@@ -1,6 +1,6 @@
 <?php
-$ssl=true;
-define('MY_SITE','HTTPS_DOMAIN');
+$ssl=HTTPS;
+define('MY_SITE','DOMAIN');
 $_SERVER['HTTP_HOST'] = MY_SITE;
 define('WP_HOME','http'.($ssl ? 's' : '').'://'.MY_SITE);
 define('WP_SITEURL','http'.($ssl ? 's' : '').'://'.MY_SITE);

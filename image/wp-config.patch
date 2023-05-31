@@ -1,9 +1,9 @@
 --- wp-config-sample.php	2023-03-01 13:27:58.000000000 +0900
-+++ wp-config-custom.php	2023-05-18 13:41:03.329580614 +0900
++++ wp-config-custom.php	2023-05-31 14:08:54.929605633 +0900
 @@ -1,4 +1,12 @@
  <?php
-+$ssl=true;
-+define('MY_SITE','HTTPS_DOMAIN');
++$ssl=HTTPS;
++define('MY_SITE','DOMAIN');
 +$_SERVER['HTTP_HOST'] = MY_SITE;
 +define('WP_HOME','http'.($ssl ? 's' : '').'://'.MY_SITE);
 +define('WP_SITEURL','http'.($ssl ? 's' : '').'://'.MY_SITE);
