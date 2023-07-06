@@ -107,7 +107,7 @@ patch -u "$ls_conf" -i /etc/litespeed/httpd_config.patch
 rm /etc/litespeed/httpd_config.patch
 sed -i "s/SOFT_LIMIT/$LS_SOFT_LIMIT/g" "$ls_conf"
 sed -i "s/HARD_LIMIT/$LS_HARD_LIMIT/g" "$ls_conf"
-mkdir "$ls_root/sessions/"
+mkdir -p "$ls_root/sessions/"
 chown litespeed.litespeed "$ls_root/sessions/"
 
 # PHP setup:
