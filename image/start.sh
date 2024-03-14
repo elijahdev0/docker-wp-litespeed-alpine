@@ -134,6 +134,14 @@ else
 	echo "INFO: You can customize this site by adding 'init.sh' script under 'wp-content' directory";
 fi
 
+# Lock root:
+chown root.root /var/www/
+chown root.root /var/www/*
+chown litespeed.litespeed /var/www/wp-content/
+
+# Clean up:
+rm -rf /var/www/wp-content/plugins/hello.php
+
 apk del patch
 "$ls_root/bin/lswsctrl" start
 #while pgrep litespeed > /dev/null; do
